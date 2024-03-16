@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "next-themes";
+import { Theme } from "@radix-ui/themes";
+import { getCookie } from "cookies-next";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +14,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const appearance = getCookie("theme") || undefined;
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang={process.env.language?.split("_")[0]} suppressHydrationWarning>
+      <body className="w-full h-full">
+        <ThemeProvider attribute="class">
+          <Theme appearance={appearance as any}>{children}</Theme>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
