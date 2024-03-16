@@ -5,6 +5,7 @@ import { Theme } from "@radix-ui/themes";
 import { getCookie, setCookie } from "cookies-next";
 import SideBar from "./_components/SideBar";
 import "@radix-ui/themes/styles.css";
+import Loader from "./_components/Loader";
 
 export const metadata: Metadata = {
   title: process.env.name,
@@ -28,6 +29,7 @@ export default function RootLayout({
             radius="medium"
             id="root"
           >
+            <Loader></Loader>
             <SideBar></SideBar>
             {children}
           </Theme>
