@@ -15,6 +15,12 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("radix-ui-themes-with-tailwind")({
+      useTailwindColorNames: true, // optional
+      useTailwindRadiusNames: true, // optional
+      mapMissingTailwindColors: true, // optional
+    }),
+  ],
 };
 export default config;
