@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Theme } from "@radix-ui/themes";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import SideBar from "./_components/SideBar";
 import "@radix-ui/themes/styles.css";
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const appearance = getCookie("theme") || undefined;
+  const appearance = getCookie("theme") || setCookie("theme", "dark");
   return (
     <html lang={process.env.language?.split("_")[0]} suppressHydrationWarning>
       <body className="w-full h-screen">
@@ -25,6 +25,7 @@ export default function RootLayout({
             appearance={appearance as any}
             accentColor={process.env.color as any}
             className="w-full h-screen flex"
+            radius="medium"
             id="root"
           >
             <SideBar></SideBar>

@@ -1,7 +1,17 @@
-import { Avatar, Button, Flex, Heading, Text } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  IconButton,
+  Text,
+} from "@radix-ui/themes";
 import React from "react";
 import { PiFaceMask } from "react-icons/pi";
 import { FiSettings } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
+import { BsThreeDots } from "react-icons/bs";
 import Link from "next/link";
 
 export default function SideBar() {
@@ -38,6 +48,21 @@ export default function SideBar() {
             设置
           </Button>
         </Link>
+      </Flex>
+      <Flex gap="1">
+        <Button variant="ghost" className="w-full !h-7">
+          <Flex justify={"between"} align={"center"} className="w-full">
+            <Text className="text-slate-950">1. First Chat</Text>
+            <Flex gap="2">
+              <IconButton radius="full" size="1" variant="ghost">
+                <BsThreeDots size={18} className="text-slate-950" />
+              </IconButton>
+              <IconButton radius="full" size="1" variant="ghost">
+                <MdDelete size={18} className="text-slate-950" />
+              </IconButton>
+            </Flex>
+          </Flex>
+        </Button>
       </Flex>
     </Flex>
   );
