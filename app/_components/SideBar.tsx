@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BsThreeDots } from 'react-icons/bs'
 import { FiSettings } from 'react-icons/fi'
 import { MdDelete } from 'react-icons/md'
 import { PiFaceMask } from 'react-icons/pi'
-import { t } from 'i18next'
 import Link from 'next/link'
 
+import t from '@/language/i18n'
 import {
   Avatar,
   Box,
@@ -13,6 +13,7 @@ import {
   Flex,
   Heading,
   IconButton,
+  Link as LinkRadix,
   Text,
 } from '@radix-ui/themes'
 
@@ -24,17 +25,19 @@ export default function SideBar() {
       gap="3"
     >
       {/* Heading */}
-      <Flex direction={'column'} gap={'2'}>
-        <Flex align={'center'} justify={'between'}>
-          <Heading className="">{process.env.name}</Heading>
-          <Avatar
-            fallback={process.env.name?.charAt(0) as string}
-            size={'2'}
-            src="../logo.svg"
-          ></Avatar>
+      <Link href={'/'}>
+        <Flex direction={'column'} gap={'2'}>
+          <Flex align={'center'} justify={'between'}>
+            <Heading className="">{process.env.NAME}</Heading>
+            <Avatar
+              fallback={process.env.NAME?.charAt(0) as string}
+              size={'2'}
+              src="../logo.svg"
+            ></Avatar>
+          </Flex>
+          <Text className="text-sm">{process.env.DESCRIPTION}</Text>
         </Flex>
-        <Text className="text-sm">{process.env.description}</Text>
-      </Flex>
+      </Link>
       {/* Settings */}
       <Flex gap="1">
         <Link href={'/mask'} className="flex-1">
@@ -52,7 +55,8 @@ export default function SideBar() {
         </Link>
       </Flex>
       <Flex gap="1">
-        <Button variant="ghost" className="!h-7 w-full">
+        {/* An <a> is a unit for a chat */}
+        <a className="underline-none flex !h-8 w-full select-none items-center rounded-xs bg-none p-2 hover:bg-accent-200">
           <Flex justify={'between'} align={'center'} className="w-full">
             <Text className="text-slate-950">1. First Chat</Text>
             <Flex gap="2">
@@ -64,7 +68,7 @@ export default function SideBar() {
               </IconButton>
             </Flex>
           </Flex>
-        </Button>
+        </a>
       </Flex>
     </Flex>
   )
