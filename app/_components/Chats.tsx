@@ -4,51 +4,12 @@ import React from 'react'
 import { BsThreeDots } from 'react-icons/bs'
 import { MdDelete } from 'react-icons/md'
 
+import { useChat } from '@/store/chats'
 import { Flex, IconButton, Text } from '@radix-ui/themes'
 
 export default function Chats() {
-  const chats: Chats = [
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 1,
-    },
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 4,
-    },
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 3,
-    },
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 3,
-    },
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 9,
-    },
-  ]
+  const { chats } = useChat()
+
   return (
     <Flex gap="1" direction={'column'}>
       {/* An <a> is a unit for a chat */}
