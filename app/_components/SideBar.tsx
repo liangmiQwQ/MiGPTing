@@ -6,59 +6,11 @@ import { PiFaceMask } from 'react-icons/pi'
 import Link from 'next/link'
 
 import t from '@/language/i18n'
-import {
-  Avatar,
-  Box,
-  Button,
-  Flex,
-  Heading,
-  IconButton,
-  Text,
-} from '@radix-ui/themes'
+import { Avatar, Button, Flex, Heading, Text } from '@radix-ui/themes'
+
+import Chats from './Chats'
 
 export default function SideBar() {
-  const chats: Chats = [
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 1,
-    },
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 4,
-    },
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 3,
-    },
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 3,
-    },
-    {
-      title: 'First Chat',
-      model: 'gpt-4-turbo-preview',
-      message: [],
-      temperature: 0.4,
-      internet: false,
-      context: 9,
-    },
-  ]
   return (
     <Flex
       className="h-full w-4/5 bg-accent-50 p-7 sm:w-1/3 lg:w-3/12"
@@ -94,29 +46,8 @@ export default function SideBar() {
             {t('setting')}
           </Button>
         </Link>
-      </Flex>
-      <Flex gap="1" direction={'column'}>
-        {/* An <a> is a unit for a chat */}
-        {chats.map((chat, index) => {
-          return (
-            <a
-              className="underline-none flex !h-8 w-full select-none items-center rounded-xs bg-none p-2 hover:bg-accent-200"
-              key={chat.model + chat.title + index}
-            >
-              <Flex justify={'between'} align={'center'} className="w-full">
-                <Text className="text-slate-950">{chat.title}</Text>
-                <Flex gap="2">
-                  <IconButton radius="full" size="1" variant="ghost">
-                    <BsThreeDots size={18} className="text-slate-950" />
-                  </IconButton>
-                  <IconButton radius="full" size="1" variant="ghost">
-                    <MdDelete size={18} className="text-slate-950" />
-                  </IconButton>
-                </Flex>
-              </Flex>
-            </a>
-          )
-        })}
+
+        <Chats></Chats>
       </Flex>
     </Flex>
   )

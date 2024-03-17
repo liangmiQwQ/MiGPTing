@@ -1,4 +1,4 @@
-interface Chat {
+export interface Chat {
   title: string
   avatar?: {
     assistant: React.ReactNode
@@ -20,9 +20,9 @@ interface Chat {
   context: number
 }
 
-interface Message {
+export interface Message {
   role: 'user' | 'assistant' | 'system'
   content: string
 }
 
-type Chats = Chat[]
+export type Chats = Chat[]
