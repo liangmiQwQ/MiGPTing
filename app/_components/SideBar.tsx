@@ -13,11 +13,13 @@ import {
   Flex,
   Heading,
   IconButton,
-  Link as LinkRadix,
   Text,
 } from '@radix-ui/themes'
 
 export default function SideBar() {
+  const chats = [
+    { title: 'First Chat', message: [{ role: 'user', content: 'Hello!' }] },
+  ]
   return (
     <Flex
       className="h-full w-4/5 bg-accent-50 p-7 sm:w-1/3 lg:w-3/12"
