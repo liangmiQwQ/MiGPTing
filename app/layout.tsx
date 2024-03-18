@@ -11,6 +11,8 @@ import SideBar from './_components/SideBar'
 
 import '@radix-ui/themes/styles.css'
 
+import { Suspense } from 'react'
+
 import Loader from './_components/Loader'
 
 export const metadata: Metadata = {
@@ -26,6 +28,9 @@ function RootLayout({
   const appearance = getCookie('theme') || setCookie('theme', 'dark')
   return (
     <html lang={process.env.LANGUAGE?.split('_')[0]} suppressHydrationWarning>
+      <Suspense>
+        <Loader language={process.env.LANGUAGE as 'zh_CN' | 'en_US'}></Loader>
+      </Suspense>
       <body className="h-screen w-full">
         <ThemeProvider attribute="class">
           <Theme
@@ -35,7 +40,6 @@ function RootLayout({
             radius="medium"
             id="root"
           >
-            <Loader></Loader>
             <SideBar></SideBar>
             {children}
           </Theme>

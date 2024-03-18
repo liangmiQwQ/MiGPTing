@@ -1,4 +1,6 @@
 {
   "mask": "Mask",
-  "setting": "Setting"
+  "setting": "Setting",
+  "searchPlaceHolder": "Tell me something you're thinking about...",
+  "search": " ???"
 }
