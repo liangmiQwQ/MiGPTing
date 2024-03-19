@@ -11,9 +11,7 @@ import SideBar from './_components/SideBar'
 
 import '@radix-ui/themes/styles.css'
 
-import { Suspense } from 'react'
-
-import Loader from './_components/Loader'
+import { NextIntlClientProvider, useMessages } from 'next-intl'
 
 export const metadata: Metadata = {
   title: process.env.NAME,
@@ -26,8 +24,10 @@ function RootLayout({
   children: React.ReactNode
 }>) {
   const appearance = getCookie('theme') || setCookie('theme', 'dark')
+  const locale = process.env.LANGUAGE
+  const messages = useMessages()
   return (
-    <html lang={process.env.LANGUAGE} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       {/* <Suspense> */}
       {/* <Loader language={process.env.LANGUAGE as 'zh_CN' | 'en_US'}></Loader> */}
       {/* </Suspense> */}
@@ -41,7 +41,9 @@ function RootLayout({
             id="root"
           >
             <SideBar></SideBar>
-            {children}
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              {children}
+            </NextIntlClientProvider>
           </Theme>
         </ThemeProvider>
       </body>

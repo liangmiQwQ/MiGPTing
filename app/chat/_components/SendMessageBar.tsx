@@ -2,13 +2,12 @@
 
 import React from 'react'
 import { SiOpenai } from 'react-icons/si'
+import { useTranslations } from 'next-intl'
 
-// import t, { resources } from '@/language/i18n'
-import useLanguage from '@/store/language'
 import { Box, TextField } from '@radix-ui/themes'
 
 export default function SendMessageBar() {
-  const { language } = useLanguage()
+  const t = useTranslations('chat')
 
   return (
     <Box className="fixed bottom-0">
@@ -17,7 +16,7 @@ export default function SendMessageBar() {
           <SiOpenai />
         </TextField.Slot>
         <TextField.Input
-        // placeholder={t('searchPlaceHolder', language)}
+          placeholder={t('sendMessagePlaceholder')}
         ></TextField.Input>
       </TextField.Root>
     </Box>

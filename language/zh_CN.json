@@ -1,6 +1,9 @@
 {
-  "setting": "设置",
-  "mask": "面具",
-  "searchPlaceHolder": "告诉我你所思考的...",
-  "search": " ???"
+  "sideBar": {
+    "setting": "设置",
+    "mask": "面具"
+  },
+  "chat": {
+    "sendMessagePlaceholder": "告诉我你所思考的..."
+  }
 }

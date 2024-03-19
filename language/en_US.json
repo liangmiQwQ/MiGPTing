@@ -1,6 +1,9 @@
 {
-  "mask": "Mask",
-  "setting": "Setting",
-  "searchPlaceHolder": "Tell me something you're thinking about...",
-  "search": " ???"
+  "sideBar": {
+    "setting": "Setting",
+    "mask": "Mask"
+  },
+  "chat": {
+    "sendMessagePlaceholder": "Tell me something you're thinking about..."
+  }
 }
