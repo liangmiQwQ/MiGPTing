@@ -3,7 +3,7 @@
 import React from 'react'
 import { SiOpenai } from 'react-icons/si'
 
-import t, { resources } from '@/language/i18n'
+// import t, { resources } from '@/language/i18n'
 import useLanguage from '@/store/language'
 import { Box, TextField } from '@radix-ui/themes'
 
@@ -17,7 +17,7 @@ export default function SendMessageBar() {
           <SiOpenai />
         </TextField.Slot>
         <TextField.Input
-          placeholder={t('searchPlaceHolder', language)}
+        // placeholder={t('searchPlaceHolder', language)}
         ></TextField.Input>
       </TextField.Root>
     </Box>

@@ -1,16 +1,16 @@
-import React, { Suspense } from 'react'
-import { BsThreeDots } from 'react-icons/bs'
+import React from 'react'
 import { FiSettings } from 'react-icons/fi'
-import { MdDelete } from 'react-icons/md'
 import { PiFaceMask } from 'react-icons/pi'
+import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 
-import t from '@/language/i18n'
 import { Avatar, Button, Flex, Heading, Text } from '@radix-ui/themes'
 
 import Chats from './Chats'
 
-export default function SideBar() {
+export default async function SideBar() {
+  const t = await getTranslations()
+
   return (
     <Flex
       className="h-full w-4/5 bg-accent-50 p-7 sm:w-1/3 lg:w-3/12"

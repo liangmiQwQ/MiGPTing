@@ -1,21 +1,14 @@
-import en_US from './en_US.json'
-import zh_CN from './zh_CN.json'
+import { getRequestConfig } from 'next-intl/server'
 
-export const resources: Resources = {
-  en_US: { translation: en_US },
-  zh_CN: { translation: zh_CN },
-}
+// Can be imported from a shared config
+const locales = ['en_US', 'zh_CN']
 
-interface Resources {
-  [key: string]: { translation: { [key: string]: string } }
-}
+export default getRequestConfig(async ({ locale }) => {
+  // There is no need to return a 404 page here, because I didn't use /[language]/some/path
+  if (!locales.includes(locale as any)) throw new Error('Invalid locale')
+  // Just throw a error is OK
 
-function t(key: string, language?: 'en_US' | 'zh_CN') {
-  return resources[
-    typeof language === 'undefined'
-      ? (process.env.LANGUAGE as 'en_US' | 'zh_CN')
-      : language
-  ].translation[key]
-}
-
-export default t
+  return {
+    messages: (await import(`./${locale}.json`)).default,
+  }
+})

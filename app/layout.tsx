@@ -27,10 +27,10 @@ function RootLayout({
 }>) {
   const appearance = getCookie('theme') || setCookie('theme', 'dark')
   return (
-    <html lang={process.env.LANGUAGE?.split('_')[0]} suppressHydrationWarning>
-      <Suspense>
-        <Loader language={process.env.LANGUAGE as 'zh_CN' | 'en_US'}></Loader>
-      </Suspense>
+    <html lang={process.env.LANGUAGE} suppressHydrationWarning>
+      {/* <Suspense> */}
+      {/* <Loader language={process.env.LANGUAGE as 'zh_CN' | 'en_US'}></Loader> */}
+      {/* </Suspense> */}
       <body className="h-screen w-full">
         <ThemeProvider attribute="class">
           <Theme
