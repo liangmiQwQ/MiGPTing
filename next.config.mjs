@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    serverMinification: true,
+    useDeploymentId: true,
+    webpackBuildWorker: true,
+  },
+}
 
 export default nextConfig
