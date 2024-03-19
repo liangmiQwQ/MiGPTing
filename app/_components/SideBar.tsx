@@ -9,7 +9,10 @@ import { Avatar, Button, Flex, Heading, Text } from '@radix-ui/themes'
 import Chats from './Chats'
 
 export default async function SideBar() {
+  // const t = await getTranslations(process.env.LANGUAGE)
   const t = await getTranslations()
+
+  // const t = (adfsgrwv: any) => '1'
 
   return (
     <Flex
