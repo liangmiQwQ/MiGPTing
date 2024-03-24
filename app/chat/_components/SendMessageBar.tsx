@@ -6,7 +6,6 @@ import { SiOpenai } from 'react-icons/si'
 import { useTranslations } from 'next-intl'
 
 import TextAreaAuto from '@/components/TextAreaAuto'
-import { useChat } from '@/store/chats'
 import { Flex, IconButton } from '@radix-ui/themes'
 
 interface SendMessageBarProps {
@@ -27,7 +26,7 @@ export default function SendMessageBar({ onSend }: SendMessageBarProps) {
       align={'center'}
     >
       <Flex
-        className={`flex-1 rounded-sm border-[1px] border-solid border-accent-200 p-2 px-3 ${moreClass} duration-100`}
+        className={`flex-1 rounded-sm border-[1px] border-solid border-slate-300 p-2 px-3 ${moreClass} duration-100`}
         align={'center'}
         gap="2"
       >

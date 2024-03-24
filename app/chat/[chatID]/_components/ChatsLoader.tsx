@@ -32,5 +32,5 @@ export default function ChatsLoader({ chatID }: { chatID: number | 'new' }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <div>chatsLoader</div>
+  return <div></div>
 }

@@ -2,12 +2,18 @@
 
 import React from 'react'
 
-import ChatsLoader from './_components/ChatsLoader'
+import SendMessageBar from '../_components/SendMessageBar'
 
 export default function page({
   params: { chatID },
 }: {
   params: { chatID: number | 'new' }
 }) {
-  return <ChatsLoader chatID={chatID}></ChatsLoader>
+  return (
+    <SendMessageBar
+      onSend={(message: string) => {
+        console.log(message)
+      }}
+    ></SendMessageBar>
+  )
 }
