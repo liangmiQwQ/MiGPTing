@@ -5,3 +5,25 @@
 .underline-none * {
   text-decoration: none !important;
 }
+
+#root * {
+  --sb-track-color: rgba(0, 0, 0, 0);
+  --sb-thumb-color: var(--accent-7);
+  --sb-size: 15px;
+
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+#root *::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+#root *::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 10px;
+}
+
+#root *::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+}

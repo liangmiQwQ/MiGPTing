@@ -9,8 +9,8 @@ import { Box, Flex, TextArea } from '@radix-ui/themes'
 
 export default function SendMessageBar() {
   const [message, setMessage] = useState('')
+  const [moreClass, setMoreClass] = useState('')
   const t = useTranslations('chat')
-  console.log(t('sendMessagePlaceholder'))
 
   return (
     <Flex
@@ -19,7 +19,7 @@ export default function SendMessageBar() {
       align={'center'}
     >
       <Flex
-        className="flex-1 rounded-sm border-[1px] border-solid border-accent-500 p-2 px-3"
+        className={`flex-1 rounded-sm border-[1px] border-solid border-accent-200 p-2 px-3 ${moreClass} duration-100`}
         align={'center'}
         gap="2"
       >
@@ -29,6 +29,8 @@ export default function SendMessageBar() {
           placeholder={t('sendMessagePlaceholder')}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onFocus={() => setMoreClass('!border-accent-700')}
+          onBlur={() => setMoreClass('')}
         ></TextAreaAuto>
       </Flex>
     </Flex>
