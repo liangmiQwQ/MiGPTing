@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { RiSendPlaneLine } from 'react-icons/ri'
 import { SiOpenai } from 'react-icons/si'
 import { useTranslations } from 'next-intl'
 
 import TextAreaAuto from '@/components/TextAreaAuto'
+import { useChat } from '@/store/chats'
 import { Flex, IconButton } from '@radix-ui/themes'
 
 interface SendMessageBarProps {
@@ -17,6 +18,7 @@ export default function SendMessageBar({ onSend }: SendMessageBarProps) {
   const [moreClass, setMoreClass] = useState('')
   const [isComposition, setIsComposition] = useState(false)
   const t = useTranslations('chat')
+  const iconButtonRef = useRef<HTMLButtonElement>(null)
 
   return (
     <Flex
@@ -45,10 +47,16 @@ export default function SendMessageBar({ onSend }: SendMessageBarProps) {
             } else if (event.key === 'Enter' && !isComposition) {
               event.preventDefault()
               onSend(message)
+              setMessage('')
             }
           }}
         ></TextAreaAuto>
-        <IconButton size="2" onClick={() => onSend(message)}>
+        <IconButton
+          size="2"
+          onClick={() => onSend(message)}
+          variant="soft"
+          ref={iconButtonRef}
+        >
           <RiSendPlaneLine />
         </IconButton>
       </Flex>

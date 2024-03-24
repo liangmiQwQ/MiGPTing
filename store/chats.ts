@@ -1,10 +1,10 @@
 import { getCookie, setCookie } from 'cookies-next'
 import { create } from 'zustand'
 
-import { Chat } from '@/interface/chats'
+import { Chat, Chats } from '@/interface/chats'
 
 interface ChatStore {
-  chats: Chat[]
+  chats: Chats
   addChat: (chat: Chat) => void
   deleteChat: (index: number) => void
   setChats: (chats: Chat[]) => void
