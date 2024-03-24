@@ -6,8 +6,6 @@ const withNextIntl = createNextIntlPlugin('./language/i18n.ts')
 
 const nextConfig = {
   experimental: {
-    serverMinification: true,
-    useDeploymentId: true,
     webpackBuildWorker: true,
   },
 }

@@ -6,7 +6,7 @@ import SendMessageBar from './_components/SendMessageBar'
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
-    <Box>
+    <Box className="relative h-screen w-full overflow-x-clip">
       {children} <SendMessageBar></SendMessageBar>
     </Box>
   )
