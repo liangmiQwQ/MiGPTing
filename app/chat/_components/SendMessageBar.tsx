@@ -1,15 +1,21 @@
 'use client'
 
 import React, { useState } from 'react'
+import { RiSendPlaneLine } from 'react-icons/ri'
 import { SiOpenai } from 'react-icons/si'
 import { useTranslations } from 'next-intl'
 
 import TextAreaAuto from '@/components/TextAreaAuto'
-import { Box, Flex, TextArea } from '@radix-ui/themes'
+import { Flex, IconButton } from '@radix-ui/themes'
 
-export default function SendMessageBar() {
+interface SendMessageBarProps {
+  onSend: (message: string) => void
+}
+
+export default function SendMessageBar({ onSend }: SendMessageBarProps) {
   const [message, setMessage] = useState('')
   const [moreClass, setMoreClass] = useState('')
+  const [isComposition, setIsComposition] = useState(false)
   const t = useTranslations('chat')
 
   return (
@@ -23,7 +29,7 @@ export default function SendMessageBar() {
         align={'center'}
         gap="2"
       >
-        <SiOpenai size="18" />
+        <SiOpenai size="20" />
         <TextAreaAuto
           className="max-h-56 flex-1"
           placeholder={t('sendMessagePlaceholder')}
@@ -31,7 +37,20 @@ export default function SendMessageBar() {
           onChange={(e) => setMessage(e.target.value)}
           onFocus={() => setMoreClass('!border-accent-700')}
           onBlur={() => setMoreClass('')}
+          onCompositionStart={() => setIsComposition(true)}
+          onCompositionEnd={() => setIsComposition(false)}
+          onKeyDown={(event: any) => {
+            if (event.key === 'Enter' && event.shiftKey) {
+              // setMessage(message + '\n')
+            } else if (event.key === 'Enter' && !isComposition) {
+              event.preventDefault()
+              onSend(message)
+            }
+          }}
         ></TextAreaAuto>
+        <IconButton size="2" onClick={() => onSend(message)}>
+          <RiSendPlaneLine />
+        </IconButton>
       </Flex>
     </Flex>
   )
