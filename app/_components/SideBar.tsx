@@ -2,17 +2,16 @@ import React from 'react'
 import { FiSettings } from 'react-icons/fi'
 import { PiFaceMask } from 'react-icons/pi'
 import { getTranslations } from 'next-intl/server'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
 import { Avatar, Button, Flex, Heading, Text } from '@radix-ui/themes'
 
-import Chats from './Chats'
+const Chats = dynamic(() => import('./Chats'), { ssr: false })
 
 export default async function SideBar() {
   // const t = await getTranslations(process.env.LANGUAGE)
   const t = await getTranslations('sideBar')
-
-  // const t = (adfsgrwv: any) => '1'
 
   return (
     <Flex
@@ -49,9 +48,8 @@ export default async function SideBar() {
             {t('setting')}
           </Button>
         </Link>
-
-        <Chats></Chats>
       </Flex>
+      <Chats></Chats>
     </Flex>
   )
 }

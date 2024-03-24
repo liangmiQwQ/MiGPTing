@@ -21,7 +21,8 @@ export const useChat = create<ChatStore>((set, get) => {
     chats: localChats,
     addChat: (chat) => {
       // Add chat to the store
-      const tempChats = { ...get().chats }
+      const tempChats = [...get().chats]
+      console.log('tempChats', tempChats)
       tempChats.push(chat)
 
       set(() => ({ chats: tempChats }))

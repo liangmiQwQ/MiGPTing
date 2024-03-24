@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import { BsThreeDots } from 'react-icons/bs'
-import { MdDelete } from 'react-icons/md'
 
 import { useChat } from '@/store/chats'
-import { Flex, IconButton, Text } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
+
+import Chat from './Chat'
 
 export default function Chats() {
   const { chats } = useChat()
@@ -15,24 +15,14 @@ export default function Chats() {
       {/* An <a> is a unit for a chat */}
       {chats.map((chat, index) => {
         return (
-          <a
-            className="underline-none flex !h-8 w-full select-none items-center rounded-xs bg-none p-2 hover:bg-accent-200"
+          <Chat
             key={chat.model + chat.title + index}
-          >
-            <Flex justify={'between'} align={'center'} className="w-full">
-              <Text className="text-slate-950">{chat.title}</Text>
-              <Flex gap="2">
-                <IconButton radius="full" size="1" variant="ghost">
-                  <BsThreeDots size={18} className="text-slate-950" />
-                </IconButton>
-                <IconButton radius="full" size="1" variant="ghost">
-                  <MdDelete size={18} className="text-slate-950" />
-                </IconButton>
-              </Flex>
-            </Flex>
-          </a>
+            index={index}
+            chat={chat}
+          ></Chat>
         )
       })}
+      {/* <Chat chat={chats[0]} index={0}></Chat> */}
     </Flex>
   )
 }
